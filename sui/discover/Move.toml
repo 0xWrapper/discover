@@ -6,12 +6,12 @@ authors = ["Euraxluo (euraxluo@outlook.com)"]
 version = "0.1.0"
 
 # testnetv1 published-at 0x7c78e11227532efe25e6839233135369e9951b8600cd170e4be6d8aace604f20
-# testnetv2 published-at 0x0
+# testnetv2 published-at 0xa6342314a6b97c02e969171d039482a9d196bdf969ddc584225c9b431eb29f9e
 # testnetv3 published-at 0x0
 # mainnetv1 published-at 0x0
 # mainnetv2 published-at 0x0
 # mainnetv3 published-at 0x0
-published-at = "0x7c78e11227532efe25e6839233135369e9951b8600cd170e4be6d8aace604f20"
+published-at = "0xa6342314a6b97c02e969171d039482a9d196bdf969ddc584225c9b431eb29f9e"
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
@@ -19,7 +19,7 @@ Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-fram
 [addresses]
 # testnet "0x7c78e11227532efe25e6839233135369e9951b8600cd170e4be6d8aace604f20"
 # mainnet "0x0"
-discover = "0x0"
+discover = "0x7c78e11227532efe25e6839233135369e9951b8600cd170e4be6d8aace604f20"
 
 
 
