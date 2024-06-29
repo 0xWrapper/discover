@@ -22,6 +22,7 @@ module discover::resources {
         path: String,
     }
 
+    /// Destroy an group
     public fun destroy_empty(group: Group) {
         let Group { id, name: _, path: _ } = group;
         object::delete(id);

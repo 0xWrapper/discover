@@ -5,21 +5,21 @@ license = "Apache 2.0"
 authors = ["Euraxluo (euraxluo@outlook.com)"]
 version = "0.1.0"
 
-# testnetv1 published-at 0x7c78e11227532efe25e6839233135369e9951b8600cd170e4be6d8aace604f20
-# testnetv2 published-at 0xa6342314a6b97c02e969171d039482a9d196bdf969ddc584225c9b431eb29f9e
+# testnetv1 published-at 0x167eccbd82fbedc1e10e7bbd0eb2b6ed80c7d90468d4dbe48152579d1bff9606
+# testnetv2 published-at 0x90505ab070f4f5e46709ecf563c7247780166c12b1bf0e6065798653f2afd4aa
 # testnetv3 published-at 0x0
 # mainnetv1 published-at 0x0
 # mainnetv2 published-at 0x0
 # mainnetv3 published-at 0x0
-published-at = "0xa6342314a6b97c02e969171d039482a9d196bdf969ddc584225c9b431eb29f9e"
+published-at = "0x90505ab070f4f5e46709ecf563c7247780166c12b1bf0e6065798653f2afd4aa"
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
 
 [addresses]
-# testnet "0x7c78e11227532efe25e6839233135369e9951b8600cd170e4be6d8aace604f20"
+# testnet "0x0"
 # mainnet "0x0"
-discover = "0x7c78e11227532efe25e6839233135369e9951b8600cd170e4be6d8aace604f20"
+discover = "0x167eccbd82fbedc1e10e7bbd0eb2b6ed80c7d90468d4dbe48152579d1bff9606"
 
 
 

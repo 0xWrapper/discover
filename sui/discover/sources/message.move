@@ -13,7 +13,7 @@ module discover::message {
     use discover::space;
 
 
-    const SPACE_CAP: address = @0xd2dfac4ecb28cc5852c7b680146b4db9685cc3f0c5045ddb71e003d0cf6706df;
+    const SPACE_CAP: address = @0xe4e07fdece02989218df46e26ee5d3b4a6f924d0194dcbb03e23023ab015c749;
     const EReferentCantForward: u64 = 0;
 
 
