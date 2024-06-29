@@ -3,8 +3,6 @@ module discover::message_test {
     use std::string::{String, utf8};
     use sui::object;
     use sui::test_scenario;
-    use sui::transfer;
-    use sui::transfer::public_transfer;
     use discover::message::Message;
     use discover::test_space;
     use discover::message;
@@ -26,7 +24,7 @@ module discover::message_test {
             message::produce<String>(
                 utf8(b"TestPayload"),
                 UserC,
-                cap_id.to_address(),
+                // cap_id.to_address(),
                 test_scenario::ctx(&mut scenario)
             );
         };
@@ -47,7 +45,7 @@ module discover::message_test {
             message::produce<String>(
                 utf8(b"TestPayload"),
                 UserC,
-                cap_id.to_address(),
+                // cap_id.to_address(),
                 test_scenario::ctx(&mut scenario)
             );
         };
