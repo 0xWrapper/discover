@@ -1,22 +1,17 @@
 #[allow(unused_use)]
 module discover::space {
-    use std::ascii;
+    use std::ascii::{Self, string};
+    use sui::transfer::{Self, Receiving};
+    use std::string::{Self, utf8};
+    use sui::table::{Self, Table};
     use sui::dynamic_object_field as dof;
     use sui::dynamic_field as df;
     use sui::event;
-    use sui::transfer::{Receiving};
-    use std::string;
     use sui::display;
     use sui::object;
     use sui::package;
-    use sui::table;
-    use sui::table::Table;
-    use sui::transfer;
     use sui::tx_context::TxContext;
     use discover::utils;
-
-
-    const MAX_IDENTIFY_LENGTH: u64 = 49;
 
     const ESpaceIdentifyAlreadyExist: u64 = 0;
     const ESpaceSetInvalidIdentify: u64 = 1;
@@ -72,16 +67,35 @@ module discover::space {
         return *table::borrow(&cap.routing, identify)
     }
 
-    public entry fun space(name: string::String, space_id: ascii::String, cap: &mut SpaceCap, ctx: &mut TxContext) {
-        transfer::public_transfer(new(name, space_id, cap, ctx), ctx.sender());
-    }
-
-
     /// Creates a new, empty Space.
     /// Parameters:
+    /// - `name`: Name of the Space.
+    /// - `space_id`: ASCII string identifying the Space.
+    /// - `cap`: SpaceCap used for creating the Space.
     /// - `ctx`: Transaction context used for creating the Space.
     /// Returns:
     /// - A new Space with no items and a generic kind.
+    /// Errors:
+    /// - `ESpaceIdentifyAlreadyExist`: If the Space identifier already exists.
+    /// - `ESpaceSetInvalidIdentify`: If the Space identifier is invalid.
+    public entry fun create(id: vector<u8>, name: vector<u8>, cap: &mut SpaceCap, ctx: &mut TxContext) {
+        transfer::public_transfer(
+            new(utf8(name), string(id), cap, ctx),
+            ctx.sender()
+        );
+    }
+
+    /// Creates a new, empty Space.
+    /// Parameters:
+    /// - `name`: Name of the Space.
+    /// - `space_id`: ASCII string identifying the Space.
+    /// - `cap`: SpaceCap used for creating the Space.
+    /// - `ctx`: Transaction context used for creating the Space.
+    /// Returns:
+    /// - A new Space with no items and a generic kind.
+    /// Errors:
+    /// - `ESpaceIdentifyAlreadyExist`: If the Space identifier already exists.
+    /// - `ESpaceSetInvalidIdentify`: If the Space identifier is invalid.
     public fun new(name: string::String, space_id: ascii::String, cap: &mut SpaceCap, ctx: &mut TxContext): Space {
         assert!(utils::is_valid_label(&space_id), ESpaceSetInvalidIdentify);
         let identify = utils::to_lowercase(space_id);
