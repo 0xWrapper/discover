@@ -80,15 +80,15 @@ module discover::space {
     /// - `ESpaceSetInvalidIdentify`: If the Space identifier is invalid.
     public entry fun create(id: vector<u8>, name: vector<u8>, cap: &mut SpaceCap, ctx: &mut TxContext) {
         transfer::public_transfer(
-            new(utf8(name), string(id), cap, ctx),
+            new(string(id), utf8(name), cap, ctx),
             ctx.sender()
         );
     }
 
     /// Creates a new, empty Space.
     /// Parameters:
-    /// - `name`: Name of the Space.
     /// - `space_id`: ASCII string identifying the Space.
+    /// - `name`: Name of the Space.
     /// - `cap`: SpaceCap used for creating the Space.
     /// - `ctx`: Transaction context used for creating the Space.
     /// Returns:
@@ -96,7 +96,7 @@ module discover::space {
     /// Errors:
     /// - `ESpaceIdentifyAlreadyExist`: If the Space identifier already exists.
     /// - `ESpaceSetInvalidIdentify`: If the Space identifier is invalid.
-    public fun new(name: string::String, space_id: ascii::String, cap: &mut SpaceCap, ctx: &mut TxContext): Space {
+    public fun new(space_id: ascii::String, name: string::String, cap: &mut SpaceCap, ctx: &mut TxContext): Space {
         assert!(utils::is_valid_label(&space_id), ESpaceSetInvalidIdentify);
         let identify = utils::to_lowercase(space_id);
         assert!(!table::contains<ascii::String, address>(&cap.routing, identify), ESpaceIdentifyAlreadyExist);
@@ -109,8 +109,8 @@ module discover::space {
         table::add(&mut cap.routing, identify, id.to_address());
         Space {
             id,
-            name,
             identify,
+            name,
         }
     }
 

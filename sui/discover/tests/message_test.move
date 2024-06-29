@@ -3,9 +3,8 @@ module discover::message_test {
     use std::string::{String, utf8};
     use sui::object;
     use sui::test_scenario;
-    use discover::message::Message;
+    use discover::message::{Self,Message};
     use discover::test_space;
-    use discover::message;
 
     const UserA: address = @0xa;
     const UserB: address = @0xb;
