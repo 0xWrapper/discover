@@ -97,4 +97,17 @@ module discover::message {
             to
         );
     }
+
+
+    #[test_only]
+    public fun test_produce<T: store>(object: T, to: address, cap: address, ctx: &mut TxContext) {
+        transfer::public_transfer(
+            Message<T> {
+                id: object::new(ctx),
+                to,
+                payload: object
+            },
+            cap
+        );
+    }
 }

@@ -1,9 +1,10 @@
 #[test_only]
 module discover::message_test {
+    use std::debug;
     use std::string::{String, utf8};
     use sui::object;
     use sui::test_scenario;
-    use discover::message::{Self,Message};
+    use discover::message::{Self, Message};
     use discover::test_space;
 
     const UserA: address = @0xa;
@@ -23,7 +24,6 @@ module discover::message_test {
             message::produce<String>(
                 utf8(b"TestPayload"),
                 UserC,
-                // cap_id.to_address(),
                 test_scenario::ctx(&mut scenario)
             );
         };
@@ -37,14 +37,14 @@ module discover::message_test {
         let mut cap = space_init.get_mut_cap();
         let cap_id = object::id(cap);
 
-
         let mut scenario = test_scenario::begin(UserA);
         {
             // Step 1: UserA produces a message
-            message::produce<String>(
+
+            message::test_produce<String>(
                 utf8(b"TestPayload"),
                 UserC,
-                // cap_id.to_address(),
+                cap_id.to_address(),
                 test_scenario::ctx(&mut scenario)
             );
         };

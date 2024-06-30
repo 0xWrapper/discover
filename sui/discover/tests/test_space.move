@@ -33,7 +33,7 @@ module discover::test_space {
     }
 
     public fun new_space(self: &mut TestInit, name: string::String, id: ascii::String): Space {
-        space::new(name, id, &mut self.cap, self.scenario.ctx())
+        space::new(id, name, &mut self.cap, self.scenario.ctx())
     }
 
     public fun get_mut_cap(self: &mut TestInit): &mut SpaceCap {
